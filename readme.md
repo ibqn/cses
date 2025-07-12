@@ -1,4 +1,10 @@
-## Getting Started
+## Set of problems
+
+[CSES Problem Set](https://cses.fi/problemset/)
+
+book is located at [CSES Book](https://cses.fi/book/book.pdf)
+
+## Getting started
 
 There might be either `python` or `C++` based solutions in this folders.
 Thus, a `python` based script can be launched simply by running
