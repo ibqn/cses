@@ -9,53 +9,52 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    vector<string> lines;
+    vector<string> lines(n);
 
     for (int i = 0; i < n; ++i)
     {
-        string line;
-        cin >> line;
-        lines.push_back(line);
+        cin >> lines[i];
     }
 
     vector<vector<int>> adj(n * m);
+    vector<bool> visited(n * m, false);
 
     for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < m; ++j)
         {
+            int idx = i * m + j;
+
             if (lines[i][j] == '#')
             {
+                visited[idx] = true;
                 continue;
             }
 
-            int idx = i * m + j;
-
             if (i > 0 && lines[i - 1][j] == '.')
             {
-                adj[idx].push_back((i - 1) * m + j);
+                adj[idx].push_back(idx - m);
             }
             if (i < n - 1 && lines[i + 1][j] == '.')
             {
-                adj[idx].push_back((i + 1) * m + j);
+                adj[idx].push_back(idx + m);
             }
             if (j > 0 && lines[i][j - 1] == '.')
             {
-                adj[idx].push_back(i * m + (j - 1));
+                adj[idx].push_back(idx - 1);
             }
             if (j < m - 1 && lines[i][j + 1] == '.')
             {
-                adj[idx].push_back(i * m + (j + 1));
+                adj[idx].push_back(idx + 1);
             }
         }
     }
 
-    vector<bool> visited(n * m, false);
     int room_count = 0;
 
     for (int i = 0; i < n * m; ++i)
     {
-        if (lines[i / m][i % m] == '#' || visited[i])
+        if (visited[i])
         {
             continue;
         }
