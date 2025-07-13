@@ -31,6 +31,12 @@ Additionally, there might be some input file which can be used for testing purpo
 cat input-1 | ./app
 ```
 
+or
+
+```shell
+./a.out < input-1
+```
+
 Run all tests
 
 ```bash
