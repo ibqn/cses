@@ -1,24 +1,26 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>
 
 using namespace std;
 
-void dfs(int node, vector<vector<int>> &adj, vector<int> &team)
+bool dfs(int node, vector<vector<int>> &adj, vector<int> &team)
 {
     for (int neighbor : adj[node])
     {
         if (team[neighbor] == 0)
         {
             team[neighbor] = team[node] % 2 + 1;
-            dfs(neighbor, adj, team);
+            if (!dfs(neighbor, adj, team))
+            {
+                return false;
+            }
         }
         else if (team[neighbor] == team[node])
         {
-            cout << "IMPOSSIBLE" << endl;
-            exit(0);
+            return false;
         }
     }
+    return true;
 }
 
 int main()
@@ -43,7 +45,11 @@ int main()
         if (team[i] == 0)
         {
             team[i] = 1;
-            dfs(i, adj, team);
+            if (!dfs(i, adj, team))
+            {
+                cout << "IMPOSSIBLE" << endl;
+                return 0;
+            }
         }
     }
 
