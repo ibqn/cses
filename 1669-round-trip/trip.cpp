@@ -57,20 +57,6 @@ int main()
             int node = dfs(i, adj, visited, parent);
             if (node)
             {
-                /*
-                cout << "parent: " << endl;
-                for (int i : parent)
-                {
-                    cout << i << " ";
-                }
-                cout << endl;
-                for (int i : visited)
-                {
-                    cout << i << " ";
-                }
-                cout << endl;
-                */
-
                 vector<int> path;
                 path.push_back(node);
                 for (int at = parent[node]; at != node; at = parent[at])
