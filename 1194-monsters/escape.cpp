@@ -120,7 +120,7 @@ int main()
         }
     }
 
-    draw(a_dist, n, m);
+    // draw(a_dist, n, m);
 
     queue<int> monster_queue;
     vector<int> monster_dist(n * m, INF);
@@ -146,7 +146,7 @@ int main()
         }
     }
 
-    draw(monster_dist, n, m);
+    // draw(monster_dist, n, m);
 
     for (int e : exit)
     {
